@@ -65,10 +65,11 @@ class LaravelAxcelerateServiceProvider extends PackageServiceProvider
 
     public function boot(): void
     {
+        parent::boot();
 
         // Explicitly publish config file
         if ($this->app->runningInConsole()) {
-            $configPath = __DIR__ . '/../config/axcelerate.php';
+            $configPath = __DIR__.'/../config/axcelerate.php';
             $this->publishes([
                 $configPath => config_path('axcelerate.php'),
             ], 'laravel-axcelerate-config');
