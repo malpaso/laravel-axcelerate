@@ -62,4 +62,14 @@ class LaravelAxcelerateServiceProvider extends PackageServiceProvider
             );
         });
     }
+
+    public function packageBooted(): void
+    {
+        // Ensure config publishing works by explicitly defining it
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                $this->package->basePath('config/axcelerate.php') => config_path('axcelerate.php'),
+            ], "{$this->package->shortName()}-config");
+        }
+    }
 }
