@@ -22,13 +22,13 @@ class CoursesService implements CoursesServiceInterface
     public function getCourses(array $parameters = []): array
     {
         $validParameters = [
-            'courseID',           // The ID of the Course to filter
+            'ID',                // The ID of the Course to filter
             'type',              // The course type to return. w = workshop, p = accredited program, el = e-learning, all = All types
             'current',           // Current courses flag. True to show only current courses
             'public',            // Whether to include public courses only. If false, returns all course types regardless of public settings
-            'updatedAfter',      // In 'YYYY-MM-DD hh:mm' format. The course last updated date must be greater than or equal to this datetime
-            'updatedBefore',     // In 'YYYY-MM-DD hh:mm' format. The course last updated date must be less than or equal to this datetime
-            'active',            // Whether to include active/inactive courses only. By default both will be included
+            'lastUpdated_min',      // In 'YYYY-MM-DD hh:mm' format. The course last updated date must be greater than or equal to this datetime
+            'lastUpdated_max',     // In 'YYYY-MM-DD hh:mm' format. The course last updated date must be less than or equal to this datetime
+            'IsActive',            // Whether to include active/inactive courses only. By default both will be included
         ];
 
         $queryParams = $this->filterParameters($parameters, $validParameters);
