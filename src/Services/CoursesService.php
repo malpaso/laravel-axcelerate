@@ -39,14 +39,14 @@ class CoursesService implements CoursesServiceInterface
         }
 
         // Validate boolean parameters
-        foreach (['current', 'public', 'active'] as $boolParam) {
+        foreach (['current', 'public', 'IsActive'] as $boolParam) {
             if (isset($queryParams[$boolParam])) {
                 $queryParams[$boolParam] = $this->normalizeBooleanParameter($queryParams[$boolParam]);
             }
         }
 
         // Validate date parameters
-        foreach (['updatedAfter', 'updatedBefore'] as $dateParam) {
+        foreach (['lastUpdated_min', 'lastUpdated_max'] as $dateParam) {
             if (isset($queryParams[$dateParam])) {
                 $this->validateDateFormat($queryParams[$dateParam]);
             }
